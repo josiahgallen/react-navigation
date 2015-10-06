@@ -18,6 +18,7 @@ module.exports = React.createClass({
 		} else {
 			links.push(this.createLink('dashboard', 'Dashboard'));
 			links.push(<li><a href="#" onClick={this.logout}>Logout</a></li>);
+			links.push(<li className="userLi">{Parse.User.current().getEmail()}</li>);
 		}
 		return (
 			<div className="nav-wrapper">
@@ -40,5 +41,6 @@ module.exports = React.createClass({
 		e.preventDefault();
 		Parse.User.logOut();
 		this.props.router.navigate('', {trigger: true});
+		this.forceUpdate();
 	}
 })

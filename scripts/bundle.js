@@ -32707,6 +32707,11 @@ module.exports = React.createClass({
 					'Logout'
 				)
 			));
+			links.push(React.createElement(
+				'li',
+				{ className: 'userLi' },
+				Parse.User.current().getEmail()
+			));
 		}
 		return React.createElement(
 			'div',
@@ -32751,6 +32756,7 @@ module.exports = React.createClass({
 		e.preventDefault();
 		Parse.User.logOut();
 		this.props.router.navigate('', { trigger: true });
+		this.forceUpdate();
 	}
 });
 
